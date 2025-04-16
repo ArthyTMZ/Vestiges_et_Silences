@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vestiges et Silence</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #1d1d1d;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .cd-player {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 30px;
+      animation: spin 20s linear infinite;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .cd-player img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .player-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    audio {
+      width: 300px;
+      margin: 10px 0;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .track-title {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Vestiges et Silence</h1>
+  <div class="cd-player">
+    <img src="vestiges_et_silence_cover.png" alt="CD cover">
+  </div>
+
+  <div class="player-controls">
+    <div class="track-title">Sous la Terre</div>
+    <audio controls>
+      <source src="1 - SOUS LA TERRE.mp3" type="audio/mpeg">
+      Votre navigateur ne supporte pas l'audio.
+    </audio>
+
+    <div class="track-title">Paysages de Guerre</div>
+    <audio controls>
+      <source src="2 - PAYSAGES DE GUERRE.mp3" type="audio/mpeg">
+      Votre navigateur ne supporte pas l'audio.
+    </audio>
+
+    <div class="track-title">Dans les Tranchées de 1914</div>
+    <audio controls>
+      <source src="3 - DANS LES TRANCHÉES DE 1914.mp3" type="audio/mpeg">
+      Votre navigateur ne supporte pas l'audio.
+    </audio>
+
+    <div class="track-title">Leur Nom Gravé</div>
+    <audio controls>
+      <source src="4 - LEUR NOM GRAVÉ.mp3" type="audio/mpeg">
+      Votre navigateur ne supporte pas l'audio.
+    </audio>
+  </div>
+</body>
+</html>
