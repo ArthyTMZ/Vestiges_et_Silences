@@ -24,15 +24,23 @@
       border-radius: 50%;
       overflow: hidden;
       margin-bottom: 30px;
-      animation: spin 20s linear infinite;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cd-player.spinning {
+      animation: spin 20s linear infinite;
     }
 
     .cd-player img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      max-width: 100%;
+      max-height: 100%;
       border-radius: 50%;
+      display: block;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
     }
 
     @keyframes spin {
@@ -62,7 +70,7 @@
 </head>
 <body>
   <h1>Vestiges et Silence</h1>
-  <div class="cd-player">
+  <div class="cd-player" id="cd-player">
     <img src="vestiges_et_silence_cover.png" alt="CD cover">
   </div>
 
@@ -91,5 +99,33 @@
       Votre navigateur ne supporte pas l'audio.
     </audio>
   </div>
+
+  <script>
+    const cd = document.getElementById('cd-player');
+    const audios = document.querySelectorAll('audio');
+
+    function stopCD() {
+      cd.classList.remove('spinning');
+    }
+
+    audios.forEach(audio => {
+      audio.addEventListener('play', () => {
+        audios.forEach(a => {
+          if (a !== audio) a.pause();
+        });
+        cd.classList.add('spinning');
+      });
+
+      audio.addEventListener('pause', () => {
+        const isAnyPlaying = [...audios].some(a => !a.paused);
+        if (!isAnyPlaying) stopCD();
+      });
+
+      audio.addEventListener('ended', () => {
+        const isAnyPlaying = [...audios].some(a => !a.paused);
+        if (!isAnyPlaying) stopCD();
+      });
+    });
+  </script>
 </body>
 </html>
